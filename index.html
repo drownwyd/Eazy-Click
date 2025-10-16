@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Easy Click</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="style.css"> <!-- link do CSS -->
+  <!-- Fonte futurista Orbitron -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div id="particles-js"></div>
+
+<!-- Header com menu hamburger -->
+<header class="header">
+  <div class="container">
+    <img src="logo.png" class="logo">
+
+    <!-- NOVO: Seletor de Tema -->
+    <div class="theme-switcher">
+      <button id="theme-toggle" class="theme-toggle-btn">
+        <span class="icon-sun">☀️</span>
+        <span class="icon-moon">🌙</span>
+      </button>
+    </div>
+    
+    <!-- Menu de navegação -->
+    <nav class="nav" id="nav">
+      <ul class="nav-list">
+        <li><a href="#string-generica" class="nav-link">String Genérica</a></li>
+        <li><a href="#consulta-aliquotas" class="nav-link">Consulta de Alíquotas</a></li>
+        <li><a href="#fator-conversao" class="nav-link">Fator de Conversão</a></li>
+      </ul>
+    </nav>
+
+    <!-- Menu hamburger (movido para o final para melhor ordem de tabulação) -->
+    <button class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+  <!-- Main content -->
+  <main class="main">
+    <!-- Seção String Genérica -->
+    <section id="string-generica" class="section">
+      <div class="container">
+        <h1 class="section-title">Remover String Genérica</h1>
+        <div class="input-container">
+          <label for="inputText" class="label-neon">Cole o texto aqui:</label>
+          <button class="btn btn-secondary" onclick="colarTexto()">📋 Colar</button>
+        </div>
+        <textarea id="inputText" placeholder="Cole seu texto..."></textarea>
+
+        <!-- Botão limpar texto centralizado -->
+        <div class="center-btn">
+          <button class="btn neon-btn" onclick="processText()">Limpar Texto</button>
+        </div>
+
+        <!-- Caixa de saída -->
+        <div class="output-container">
+          <label for="outputText" class="label-neon">Resultado:</label>
+          <button class="btn btn-secondary" onclick="copiarTexto()">📄 Copiar</button>
+        </div>
+        <textarea id="outputText" readonly placeholder="O texto limpo aparecerá aqui..."></textarea>
+      </div>
+    </section>
+
+    <!-- Seção Consulta de Alíquotas -->
+    <section id="consulta-aliquotas" class="section">
+      <div class="container">
+        <h1 class="section-title">Consulta de Alíquotas</h1>
+        <div class="card">
+          <label for="origem">Origem:</label>
+          <select id="origem"></select>
+
+          <label for="destino">Destino:</label>
+          <select id="destino"></select>
+
+          <div id="resultado-al">Selecione origem e destino.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção Fator de Conversão -->
+    <section id="fator-conversao" class="section">
+      <div class="container">
+        <h1 class="section-title">Calcular Fator de Conversão</h1>
+        <div class="card">
+          <label>Quantidade da Unidade Principal:</label>
+          <input type="number" id="principal" placeholder="Ex: 1" oninput="calcular()">
+          
+          <label>Quantidade da Unidade Secundária:</label>
+          <input type="number" id="secundaria" placeholder="Ex: 12" oninput="calcular()">
+
+          <label>Quem é maior?</label>
+            <select id="tipo" onchange="calcular()">
+              <option value="" disabled selected>Selecione qual unidade é a maior...</option>
+              <option value="principalMaior">A Unidade Principal é a maior</option>
+              <option value="secundariaMaior">A Unidade Secundária é a maior</option>
+            </select>
+
+          
+          <p class="resultado-un" id="resultado">Resultado</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- script -->
+  <script src="dados.js"></script>
+  <script src="script.js"></script>
+
+  <!-- NOVO: Scripts para a animação de fundo -->
+  <script src="particles.min.js"></script>
+  <script src="app-particles.js"></script>
+
+</body>
+</html>
+
