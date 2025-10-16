@@ -1,8 +1,8 @@
 const aliquotas = {
   AC: { nome: "Acre", interno: 19, regiao: "N" },
   AL: { nome: "Alagoas", interno: 20, regiao: "NE" },
-  AP: { nome: "Amapá", interno: 20, regiao: "N" },
-  AM: { nome: "Amazonas", interno: 18, regiao: "N" },
+  AP: { nome: "Amapá", interno: 18, regiao: "N" },
+  AM: { nome: "Amazonas", interno: 20, regiao: "N" },
   BA: { nome: "Bahia", interno: 20.5, regiao: "NE" },
   CE: { nome: "Ceará", interno: 20, regiao: "NE" },
   DF: { nome: "Distrito Federal", interno: 20, regiao: "CO" },
@@ -17,8 +17,8 @@ const aliquotas = {
   PR: { nome: "Paraná", interno: 19.5, regiao: "S" },
   PE: { nome: "Pernambuco", interno: 20.5, regiao: "NE" },
   PI: { nome: "Piauí", interno: 21, regiao: "NE" },
-  RJ: { nome: "Rio de Janeiro", interno: 18, regiao: "SE" },
-  RN: { nome: "Rio Grande do Norte", interno: 17, regiao: "NE" },
+  RJ: { nome: "Rio de Janeiro", interno: 22, regiao: "SE" },
+  RN: { nome: "Rio Grande do Norte", interno: 18, regiao: "NE" },
   RS: { nome: "Rio Grande do Sul", interno: 22, regiao: "S" },
   RO: { nome: "Rondônia", interno: 19.5, regiao: "N" },
   RR: { nome: "Roraima", interno: 20, regiao: "N" },
@@ -41,31 +41,14 @@ function getAliquota(origem, destino, importado = false) {
       return `De ${origem} para ${destino}, a Alíquota Interestadual (Importados) é 4%`;
     }
 
-    const regiaoOrigem = aliquotas[origem].regiao;
-    const regiaoDestino = aliquotas[destino].regiao;
+    // Estados que aplicam 7% para interestadual (exceto para si mesmos)
+    const estados7Porcento = ["MG", "PR", "RJ", "RS", "SC", "SP"];
 
-    const sulSudeste = ["S", "SE"];
-    const norteNeCoMaisES = ["N", "NE", "CO", "SE"];
-
-    // Regra: Sul (S) / Sudeste (SE) (exceto quando tratar ES especificamente) → N/NE/CO/ES => 7%
-    if (
-      sulSudeste.includes(regiaoOrigem) &&
-      regiaoOrigem !== "SE" &&
-      norteNeCoMaisES.includes(regiaoDestino)
-    ) {
+    if (estados7Porcento.includes(origem)) {
       return `De ${origem} para ${destino}, a Alíquota Interestadual é 7%`;
+    } else {
+      return `De ${origem} para ${destino}, a Alíquota Interestadual é 12%`;
     }
-
-    if (
-      norteNeCoMaisES.includes(regiaoOrigem) &&
-      sulSudeste.includes(regiaoDestino) &&
-      regiaoDestino !== "SE"
-    ) {
-      return `De ${origem} para ${destino}, a Alíquota Interestadual é 7%`;
-    }
-
-    // Caso geral: 12%
-    return `De ${origem} para ${destino}, a Alíquota Interestadual é 12%`;
   }
 }
 
@@ -103,7 +86,7 @@ function carregarEstados() {
 function consultarAliquota() {
   const origem = document.getElementById("origem")?.value;
   const destino = document.getElementById("destino")?.value;
-  const resultadoEl = document.getElementById("resultado-al"); // <--- USANDO resultado-al
+  const resultadoEl = document.getElementById("resultado-al");
 
   if (!origem || !destino || !resultadoEl) return;
   resultadoEl.innerText = getAliquota(origem, destino);
