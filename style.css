@@ -552,16 +552,17 @@ body.light-theme #resultado-al {
 
 @media (max-width: 768px) {
   .theme-switcher {
-    order: 2; /* Muda a ordem para depois do logo */
-    margin-left: 0;
-    margin-right: 1rem;
+    order: 3; /* Coloca o seletor de tema antes do hambúrguer */
+    margin-left: auto; /* Empurra para a direita */
+    margin-right: 10px; /* Espaçamento entre o seletor e o hambúrguer */
   }
   .nav {
-    order: 3;
+    order: 2; /* Mantém a navegação antes dos elementos da direita */
   }
   .hamburger {
     display: flex;
-    order: 4;
+    order: 4; /* Coloca o hambúrguer por último na ordem */
+    margin-left: 0; /* Garante que não há margem extra empurrando-o */
   }
   .hamburger.active {
     position: fixed;
