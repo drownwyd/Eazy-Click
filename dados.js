@@ -79,11 +79,11 @@ function carregarEstados() {
   destinoSelect.selectedIndex = 0;
 
   // Exibe resultado inicial
-  consultarAliquota();
+  atualizarResultadoAliquota(); // Chamada atualizada
 }
 
 // Atualiza resultado automaticamente ao trocar seleção
-function consultarAliquota() {
+function atualizarResultadoAliquota() { // Nome da função atualizado
   const origem = document.getElementById("origem")?.value;
   const destino = document.getElementById("destino")?.value;
   const resultadoEl = document.getElementById("resultado-al");
@@ -95,6 +95,6 @@ function consultarAliquota() {
 // Inicializa tudo quando a página carregar
 window.onload = () => {
   carregarEstados();
-  document.getElementById("origem")?.addEventListener("change", consultarAliquota);
-  document.getElementById("destino")?.addEventListener("change", consultarAliquota);
+  document.getElementById("origem")?.addEventListener("change", atualizarResultadoAliquota); // Chamada atualizada
+  document.getElementById("destino")?.addEventListener("change", atualizarResultadoAliquota); // Chamada atualizada
 };
