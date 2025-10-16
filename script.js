@@ -3,12 +3,20 @@ document.addEventListener("DOMContentLoaded", function() {
     const hamburger = document.getElementById("hamburger");
     const nav = document.getElementById("nav");
     const navLinks = document.querySelectorAll(".nav-link");
+    const themeSwitcher = document.querySelector(".theme-switcher"); // Seleciona o contêiner do tema
     
     // Toggle do menu hamburger
     hamburger.addEventListener("click", function() {
         hamburger.classList.toggle("active");
         nav.classList.toggle("active");
         document.body.style.overflow = nav.classList.contains("active") ? "hidden" : "auto";
+        
+        // Esconde o seletor de tema quando o menu hambúrguer está ativo
+        if (nav.classList.contains("active")) {
+            themeSwitcher.classList.add("hidden");
+        } else {
+            themeSwitcher.classList.remove("hidden");
+        }
     });
     
     // Fecha o menu ao clicar em um link
@@ -17,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
             hamburger.classList.remove("active");
             nav.classList.remove("active");
             document.body.style.overflow = "auto";
+            themeSwitcher.classList.remove("hidden"); // Mostra o seletor de tema novamente
         });
     });
     
@@ -26,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
             hamburger.classList.remove("active");
             nav.classList.remove("active");
             document.body.style.overflow = "auto";
+            themeSwitcher.classList.remove("hidden"); // Mostra o seletor de tema novamente
         }
     });
     
@@ -226,7 +236,7 @@ function calcular() {
 // ============================================= //
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('theme-toggle');
-    const hamburger = document.getElementById('hamburger'); // botão do menu
+    const themeSwitcher = document.querySelector('.theme-switcher'); // Seleciona o contêiner
     const currentTheme = localStorage.getItem('theme');
 
     // Verifica se já existe um tema salvo no localStorage
@@ -246,8 +256,6 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('theme', theme);
     });
 
-    // Quando clicar no hambúrguer, esconder o botão de tema
-    hamburger.addEventListener('click', () => {
-        themeToggle.classList.toggle('hidden');
-    });
+    // A lógica de esconder/mostrar o themeSwitcher já está no listener do hamburger
+    // e no listener de clique fora/link de navegação.
 });
