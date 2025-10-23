@@ -20,7 +20,6 @@ O design foi inspirado em interfaces futuristas, com **tema escuro**, **efeitos 
 ### 🔹 Remover String Genérica
 Permite colar um texto e limpá-lo automaticamente, removendo trechos indesejados de forma rápida.
 
-![Remover String Genérica]
 <img width="1904" height="945" alt="wM8H63l7dJ" src="https://github.com/user-attachments/assets/b4ea07e9-7bad-41d0-9fb1-5e20fcf5b644" />
 
 ---
@@ -28,7 +27,6 @@ Permite colar um texto e limpá-lo automaticamente, removendo trechos indesejado
 ### 🔹 Consulta de Alíquotas
 Realiza consultas entre estados de origem e destino, exibindo automaticamente a alíquota correspondente.
 
-![Consulta de Alíquotas]
 <img width="1906" height="943" alt="GNYUM2D9eg" src="https://github.com/user-attachments/assets/088fe829-a922-4731-9101-fdb6c1f1d22f" />
 
 ---
@@ -36,7 +34,6 @@ Realiza consultas entre estados de origem e destino, exibindo automaticamente a 
 ### 🔹 Fator de Conversão
 Calcula o fator de conversão entre unidades principal e secundária, com indicação de qual é maior.
 
-![Fator de Conversão]
 <img width="1903" height="947" alt="4h8FXhn4NX" src="https://github.com/user-attachments/assets/df3db7c9-e38f-4144-bf60-e081841e66a9" />
 
 ---
