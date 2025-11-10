@@ -1,21 +1,71 @@
 // Aguarda o carregamento completo do DOM
 document.addEventListener("DOMContentLoaded", function() {
-    const themeSwitcher = document.querySelector(".theme-switcher");
-    
-    // Parallax header - Removendo a lógica de mudança de background e sombra ao rolar
-    // window.addEventListener("scroll", function() {
-    //     const scrolled = window.pageYOffset;
-    //     const header = document.querySelector(".header");
-    //     if (scrolled > 50) {
-    //         header.style.background = "rgba(10, 10, 10, 0.98)";
-    //         header.style.boxShadow = "0 2px 20px rgba(0, 212, 255, 0.1)";
-    //     } else {
-    //         header.style.background = "rgba(10, 10, 10, 0.95)";
-    //         header.style.boxShadow = "none";
-    //     }
-    // });
-    
-    // Animação de cards na landing page
+    const themeToggle = document.getElementById('theme-toggle');
+    const header = document.querySelector(".header");
+    const menuToggleButton = document.getElementById('menu-toggle');
+    const mobileNavMenu = document.getElementById('mobile-nav-menu');
+    const currentTheme = localStorage.getItem('theme');
+
+    // ============================================= //
+    //  LÓGICA PARA O SELETOR DE TEMA (CLARO/ESCURO) //
+    // ============================================= //
+    if (currentTheme) {
+        document.body.classList.add(currentTheme);
+    }
+
+    themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('light-theme');
+        let theme = 'dark-theme';
+        if (document.body.classList.contains('light-theme')) {
+            theme = 'light-theme';
+        }
+        localStorage.setItem('theme', theme);
+    });
+
+    // ============================================= //
+    //  LÓGICA PARA O CABEÇALHO FIXO E EFEITO SCROLL //
+    // ============================================= //
+    const scrollThreshold = 10; // Quantidade de pixels para rolar antes de aplicar o estilo 'scrolled'
+
+    function handleScroll() {
+        if (window.scrollY > scrollThreshold) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Chama na carga inicial para verificar a posição do scroll
+
+    // ============================================= //
+    //  LÓGICA PARA O MENU MOBILE                    //
+    // ============================================= //
+    if (menuToggleButton && mobileNavMenu) {
+        menuToggleButton.addEventListener('click', () => {
+            const isOpen = mobileNavMenu.classList.toggle('open');
+            menuToggleButton.classList.toggle('open'); // Adiciona classe para animação do ícone
+            
+            if (isOpen) {
+                document.body.style.overflow = 'hidden'; // Desativa o scroll do corpo
+            } else {
+                document.body.style.overflow = ''; // Reativa o scroll
+            }
+        });
+
+        // Fecha o menu mobile ao clicar em um link
+        mobileNavMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNavMenu.classList.remove('open');
+                menuToggleButton.classList.remove('open');
+                document.body.style.overflow = ''; // Reativa o scroll
+            });
+        });
+    }
+
+    // ============================================= //
+    //  ANIMAÇÃO DE CARDS NA LANDING PAGE            //
+    // ============================================= //
     function animateFunctionCards() {
         const cards = document.querySelectorAll(".function-card");
         cards.forEach(card => {
@@ -34,27 +84,4 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     window.addEventListener("scroll", animateFunctionCards);
     animateFunctionCards(); // Trigger on load
-
-    // ============================================= //
-    //  LÓGICA PARA O SELETOR DE TEMA (CLARO/ESCURO) //
-    // ============================================= //
-    const themeToggle = document.getElementById('theme-toggle');
-    const currentTheme = localStorage.getItem('theme');
-
-    // Verifica se já existe um tema salvo no localStorage
-    if (currentTheme) {
-        document.body.classList.add(currentTheme);
-    }
-
-    themeToggle.addEventListener('click', () => {
-        // Alterna a classe 'light-theme' no body
-        document.body.classList.toggle('light-theme');
-
-        // Salva a preferência do usuário no localStorage
-        let theme = 'dark-theme'; // Padrão
-        if (document.body.classList.contains('light-theme')) {
-            theme = 'light-theme';
-        }
-        localStorage.setItem('theme', theme);
-    });
 });
