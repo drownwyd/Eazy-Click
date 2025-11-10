@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Easy Click</title>
+  <title>Easy Click - Funções</title>
   <link rel="icon" type="image/png" href="https://eotzgtlgsczidwwntkzq.supabase.co/storage/v1/object/public/product-images/logo.png">
   <link rel="stylesheet" href="style.css"> <!-- link do CSS -->
   <!-- Fonte futurista Orbitron -->
@@ -26,16 +26,16 @@
       </button>
     </div>
     
-    <!-- Menu de navegação -->
+    <!-- Menu de navegação (agora para as novas páginas) -->
     <nav class="nav" id="nav">
       <ul class="nav-list">
-        <li><a href="#string-generica" class="nav-link">String Genérica</a></li>
-        <li><a href="#consulta-aliquotas" class="nav-link">Consulta de Alíquotas</a></li>
-        <li><a href="#fator-conversao" class="nav-link">Fator de Conversão</a></li>
+        <li><a href="string-generica.html" class="nav-link">String Genérica</a></li>
+        <li><a href="consulta-aliquotas.html" class="nav-link">Consulta de Alíquotas</a></li>
+        <li><a href="fator-conversao.html" class="nav-link">Fator de Conversão</a></li>
       </ul>
     </nav>
 
-    <!-- Menu hamburger (movido para o final para melhor ordem de tabulação) -->
+    <!-- Menu hamburger -->
     <button class="hamburger" id="hamburger">
       <span></span>
       <span></span>
@@ -44,78 +44,40 @@
   </div>
 </header>
 
-  <!-- Main content -->
+  <!-- Main content - Landing Page with Function Cards -->
   <main class="main">
-    <!-- Seção String Genérica -->
-    <section id="string-generica" class="section">
+    <section id="home" class="section home-section">
       <div class="container">
-        <h1 class="section-title">Remover String Genérica</h1>
-        <div class="input-container">
-          <label for="inputText" class="label-neon">Cole o texto aqui:</label>
-          <button class="btn btn-secondary" onclick="colarTexto()">📋 Colar</button>
-        </div>
-        <textarea id="inputText" placeholder="Cole seu texto..."></textarea>
+        <h1 class="section-title">Bem-vindo ao Easy Click!</h1>
+        <p class="subtitle">Escolha uma função para começar:</p>
 
-        <!-- Botão limpar texto centralizado -->
-        <div class="center-btn">
-          <button class="btn neon-btn" onclick="processText()">Limpar Texto</button>
-        </div>
+        <div class="function-cards-grid">
+          <a href="string-generica.html" class="function-card">
+            <h2 class="card-title">Remover String Genérica</h2>
+            <p class="card-description">Limpe textos rapidamente, removendo trechos indesejados.</p>
+            <span class="card-icon">🧩</span>
+          </a>
 
-        <!-- Caixa de saída -->
-        <div class="output-container">
-          <label for="outputText" class="label-neon">Resultado:</label>
-          <button class="btn btn-secondary" onclick="copiarTexto()">📄 Copiar</button>
-        </div>
-        <textarea id="outputText" readonly placeholder="O texto limpo aparecerá aqui..."></textarea>
-      </div>
-    </section>
+          <a href="consulta-aliquotas.html" class="function-card">
+            <h2 class="card-title">Consulta de Alíquotas</h2>
+            <p class="card-description">Consulte alíquotas internas e interestaduais entre estados.</p>
+            <span class="card-icon">🧮</span>
+          </a>
 
-    <!-- Seção Consulta de Alíquotas -->
-    <section id="consulta-aliquotas" class="section">
-      <div class="container">
-        <h1 class="section-title">Consulta de Alíquotas</h1>
-        <div class="card">
-          <label for="origem">Origem:</label>
-          <select id="origem"></select>
-
-          <label for="destino">Destino:</label>
-          <select id="destino"></select>
-
-          <div id="resultado-al">Selecione origem e destino.</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Seção Fator de Conversão -->
-    <section id="fator-conversao" class="section">
-      <div class="container">
-        <h1 class="section-title">Calcular Fator de Conversão</h1>
-        <div class="card">
-          <label>Quantidade da Unidade Principal:</label>
-          <input type="number" id="principal" placeholder="Ex: 1" oninput="calcular()">
-          
-          <label>Quantidade da Unidade Secundária:</label>
-          <input type="number" id="secundaria" placeholder="Ex: 12" oninput="calcular()">
-
-          <label>Quem é maior?</label>
-            <select id="tipo" onchange="calcular()">
-              <option value="" disabled selected>Selecione qual unidade é a maior...</option>
-              <option value="principalMaior">A Unidade Principal é a maior</option>
-              <option value="secundariaMaior">A Unidade Secundária é a maior</option>
-            </select>
-
-          
-          <p class="resultado-un" id="resultado">Resultado</p>
+          <a href="fator-conversao.html" class="function-card">
+            <h2 class="card-title">Fator de Conversão</h2>
+            <p class="card-description">Calcule o fator de conversão entre unidades principal e secundária.</p>
+            <span class="card-icon">🔁</span>
+          </a>
         </div>
       </div>
     </section>
   </main>
 
   <!-- script -->
-  <script src="dados.js"></script>
   <script src="script.js"></script>
 
-  <!-- NOVO: Scripts para a animação de fundo -->
+  <!-- Scripts para a animação de fundo -->
   <script src="particles.min.js"></script>
   <script src="app-particles.js"></script>
 
