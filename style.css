@@ -88,7 +88,7 @@ body {
   width: 100%;
   background: var(--header-bg); /* Usando a variável de fundo mais transparente */
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border-color);
+  /* border-bottom: 1px solid var(--border-color); */ /* Removido a borda inferior */
   z-index: 1000;
   transition: background-color var(--transition-smooth), border-color var(--transition-smooth);
 }
