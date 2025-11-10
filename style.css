@@ -83,77 +83,43 @@ body {
 
 .header {
   position: fixed;
-  top: 20px; /* Distância do topo */
-  left: 50%;
-  transform: translateX(-50%); /* Centraliza horizontalmente */
-  width: auto; /* Permite que o conteúdo defina a largura */
-  max-width: calc(100% - 40px); /* Largura máxima com margem lateral */
-  background: var(--header-bg);
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--header-bg); /* Usando a variável de fundo mais transparente */
   backdrop-filter: blur(10px);
-  border: 1px solid var(--border-color); /* Borda em toda a volta */
-  border-radius: 16px; /* Cantos arredondados */
+  border-bottom: 1px solid var(--border-color);
   z-index: 1000;
-  transition: background-color var(--transition-smooth), border-color var(--transition-smooth), transform var(--transition-smooth), box-shadow var(--transition-smooth);
-  padding: 0.8rem 1.5rem; /* Ajusta o padding para o novo formato */
-  box-shadow: none; /* Remove qualquer sombra padrão */
+  transition: background-color var(--transition-smooth), border-color var(--transition-smooth);
+}
+
+.header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 1rem 20px;
 }
 
-/* Estilos para o cabeçalho quando a página é rolada */
-.header.scrolled {
-  top: 0; /* Fica no topo */
-  max-width: 100%; /* Ocupa a largura total */
-  border-radius: 0; /* Remove arredondamento */
-  box-shadow: 0 2px 20px rgba(0, 212, 255, 0.1); /* Adiciona sombra */
-  background: rgba(10, 10, 10, 0.98); /* Fundo mais opaco */
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: var(--shadow-neon);
+  cursor: pointer;
+  transition: var(--transition-smooth);
 }
-
-body.light-theme .header.scrolled {
-  box-shadow: 0 2px 20px rgba(0, 123, 255, 0.1);
-  background: rgba(255, 255, 255, 0.98);
-}
-
 
 .header .logo {
   width: 100%;
   max-width: 80px; /* limita o tamanho */
   height: auto;
-  margin-right: 1rem; /* Espaço entre logo e nav */
 }
 
 .logo:hover {
   transform: scale(1.05);
-}
-
-/* Navegação Desktop */
-.desktop-nav {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.desktop-nav a {
-  color: var(--text-secondary);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color var(--transition-fast), text-shadow var(--transition-fast);
-}
-
-.desktop-nav a:hover {
-  color: var(--primary-color);
-  text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
-}
-
-body.light-theme .desktop-nav a:hover {
-  text-shadow: none;
-}
-
-.desktop-nav .nav-buttons {
-  display: flex;
-  gap: 0.8rem;
-  margin-left: 1rem;
 }
 
 /* Estilos para o Seletor de Tema */
@@ -229,95 +195,6 @@ body.light-theme .theme-toggle-btn::after {
   transform: translateX(26px); /* Ajustado para o novo tamanho do botão */
   background-color: var(--primary-color); /* Cor do toggle no tema claro */
 }
-
-/* Menu Toggle Button (Mobile) */
-.menu-toggle-btn {
-  display: none; /* Escondido por padrão no desktop */
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  z-index: 1001; /* Acima do header */
-}
-
-.menu-toggle-btn .icon-bar {
-  display: block;
-  width: 25px;
-  height: 3px;
-  background-color: var(--primary-color);
-  margin: 5px 0;
-  transition: all var(--transition-smooth);
-  border-radius: 2px;
-}
-
-.menu-toggle-btn.open .icon-bar:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-
-.menu-toggle-btn.open .icon-bar:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-toggle-btn.open .icon-bar:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-}
-
-/* Mobile Navigation Menu */
-.mobile-nav-menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--background-dark);
-  backdrop-filter: blur(10px);
-  z-index: 999;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transform: translateX(100%); /* Escondido por padrão */
-  transition: transform var(--transition-smooth);
-  padding: 2rem;
-}
-
-.mobile-nav-menu.open {
-  transform: translateX(0); /* Visível */
-}
-
-.mobile-nav-menu .mobile-nav-links,
-.mobile-nav-menu .mobile-nav-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  width: 80%;
-  max-width: 300px;
-  text-align: center;
-}
-
-.mobile-nav-menu .mobile-nav-links a {
-  color: var(--text-primary);
-  text-decoration: none;
-  font-size: 1.5rem;
-  font-weight: 600;
-  padding: 0.8rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  transition: color var(--transition-fast);
-}
-
-.mobile-nav-menu .mobile-nav-links a:hover {
-  color: var(--primary-color);
-}
-
-.mobile-nav-menu .mobile-nav-buttons {
-  margin-top: 2rem;
-}
-
-.mobile-nav-menu .btn {
-  width: 100%;
-  justify-content: center;
-}
-
 
 /* ========================================= */
 /*  ANIMAÇÃO DE FUNDO (PARTICLES.JS)         */
@@ -688,17 +565,14 @@ body.light-theme #resultado-al {
 /* ========================================= */
 
 @media (max-width: 768px) {
-  .header {
-    padding: 0.6rem 1rem;
-    max-width: calc(100% - 20px);
-  }
+  /* Adjust header container for mobile to ensure logo and theme switcher are well-placed */
   .header .container {
     justify-content: space-between;
-    padding: 0;
+    padding: 1rem 15px;
   }
   .theme-switcher {
     margin-left: auto;
-    margin-right: 0;
+    margin-right: 0; /* Remove any extra margin */
   }
   
   .section-title { font-size: 2rem; }
@@ -707,15 +581,7 @@ body.light-theme #resultado-al {
   .card { padding: 1.5rem; }
 
   .function-cards-grid {
-    grid-template-columns: 1fr;
-  }
-
-  /* Esconde navegação desktop e mostra toggle no mobile */
-  .desktop-nav {
-    display: none;
-  }
-  .menu-toggle-btn {
-    display: block;
+    grid-template-columns: 1fr; /* Uma coluna em telas menores */
   }
 }
 
