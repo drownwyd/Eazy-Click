@@ -12,7 +12,7 @@
   --text-primary: #ffffff;
   --text-secondary: #b0b0b0;
   --border-color: #333;
-  --header-bg: rgba(10, 10, 10, 0.95);
+  --header-bg: rgba(10, 10, 10, 0.7); /* Mais transparente */
   
   /* Gradientes */
   --gradient-primary: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
@@ -40,7 +40,7 @@ body.light-theme {
   --text-primary: #212529;
   --text-secondary: #6c757d;
   --border-color: #dee2e6;
-  --header-bg: rgba(255, 255, 255, 0.95);
+  --header-bg: rgba(255, 255, 255, 0.7); /* Mais transparente */
 
   --gradient-primary: linear-gradient(135deg, #007BFF 0%, #0056b3 100%);
   --gradient-dark: linear-gradient(135deg, #ffffff 0%, #f1f1f1 100%);
@@ -78,7 +78,7 @@ body {
 }
 
 /* ========================================= */
-/*  HEADER, NAVEGAÇÃO E SELETOR DE TEMA      */
+/*  HEADER E SELETOR DE TEMA                 */
 /* ========================================= */
 
 .header {
@@ -86,7 +86,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  background: var(--header-bg);
+  background: var(--header-bg); /* Usando a variável de fundo mais transparente */
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-color);
   z-index: 1000;
@@ -95,7 +95,7 @@ body {
 
 .header .container {
   display: flex;
-  justify-content: space-between; /* Changed to space-between to push logo and theme switcher apart */
+  justify-content: space-between;
   align-items: center;
   padding: 1rem 20px;
 }
