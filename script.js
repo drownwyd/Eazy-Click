@@ -1,43 +1,6 @@
 // Aguarda o carregamento completo do DOM
 document.addEventListener("DOMContentLoaded", function() {
-    const hamburger = document.getElementById("hamburger");
-    const nav = document.getElementById("nav");
-    const navLinks = document.querySelectorAll(".nav-link");
     const themeSwitcher = document.querySelector(".theme-switcher");
-    
-    // Toggle do menu hamburger
-    hamburger.addEventListener("click", function() {
-        hamburger.classList.toggle("active");
-        nav.classList.toggle("active");
-        document.body.style.overflow = nav.classList.contains("active") ? "hidden" : "auto";
-        
-        // Esconde o seletor de tema quando o menu hambúrguer está ativo
-        if (nav.classList.contains("active")) {
-            themeSwitcher.classList.add("hidden");
-        } else {
-            themeSwitcher.classList.remove("hidden");
-        }
-    });
-    
-    // Fecha o menu ao clicar em um link
-    navLinks.forEach(link => {
-        link.addEventListener("click", function() {
-            hamburger.classList.remove("active");
-            nav.classList.remove("active");
-            document.body.style.overflow = "auto";
-            themeSwitcher.classList.remove("hidden"); // Mostra o seletor de tema novamente
-        });
-    });
-    
-    // Fecha ao clicar fora
-    document.addEventListener("click", function(e) {
-        if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
-            hamburger.classList.remove("active");
-            nav.classList.remove("active");
-            document.body.style.overflow = "auto";
-            themeSwitcher.classList.remove("hidden"); // Mostra o seletor de tema novamente
-        }
-    });
     
     // Parallax header
     window.addEventListener("scroll", function() {
