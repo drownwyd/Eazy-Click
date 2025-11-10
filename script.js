@@ -2,18 +2,18 @@
 document.addEventListener("DOMContentLoaded", function() {
     const themeSwitcher = document.querySelector(".theme-switcher");
     
-    // Parallax header
-    window.addEventListener("scroll", function() {
-        const scrolled = window.pageYOffset;
-        const header = document.querySelector(".header");
-        if (scrolled > 50) {
-            header.style.background = "rgba(10, 10, 10, 0.98)";
-            header.style.boxShadow = "0 2px 20px rgba(0, 212, 255, 0.1)";
-        } else {
-            header.style.background = "rgba(10, 10, 10, 0.95)";
-            header.style.boxShadow = "none";
-        }
-    });
+    // Parallax header - Removendo a lógica de mudança de background e sombra ao rolar
+    // window.addEventListener("scroll", function() {
+    //     const scrolled = window.pageYOffset;
+    //     const header = document.querySelector(".header");
+    //     if (scrolled > 50) {
+    //         header.style.background = "rgba(10, 10, 10, 0.98)";
+    //         header.style.boxShadow = "0 2px 20px rgba(0, 212, 255, 0.1)";
+    //     } else {
+    //         header.style.background = "rgba(10, 10, 10, 0.95)";
+    //         header.style.boxShadow = "none";
+    //     }
+    // });
     
     // Animação de cards na landing page
     function animateFunctionCards() {

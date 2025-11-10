@@ -83,21 +83,27 @@ body {
 
 .header {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: var(--header-bg); /* Usando a variável de fundo mais transparente */
+  top: 20px; /* Distância do topo */
+  left: 50%;
+  transform: translateX(-50%); /* Centraliza horizontalmente */
+  width: auto; /* Permite que o conteúdo defina a largura */
+  max-width: calc(100% - 40px); /* Largura máxima com margem lateral */
+  background: var(--header-bg);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border-color);
+  border: 1px solid var(--border-color); /* Borda em toda a volta */
+  border-radius: 16px; /* Cantos arredondados */
   z-index: 1000;
-  transition: background-color var(--transition-smooth), border-color var(--transition-smooth);
+  transition: background-color var(--transition-smooth), border-color var(--transition-smooth), transform var(--transition-smooth);
+  padding: 0.8rem 1.5rem; /* Ajusta o padding para o novo formato */
+  box-shadow: none; /* Remove qualquer sombra padrão */
 }
 
 .header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 20px;
+  padding: 0; /* Remove padding do container, pois o header já tem */
+  width: 100%; /* Garante que o container ocupe a largura total do seu pai (header) */
 }
 
 .logo {
@@ -566,9 +572,13 @@ body.light-theme #resultado-al {
 
 @media (max-width: 768px) {
   /* Adjust header container for mobile to ensure logo and theme switcher are well-placed */
+  .header {
+    padding: 0.6rem 1rem; /* Ajusta padding para telas menores */
+    max-width: calc(100% - 20px); /* Mais margem nas laterais em mobile */
+  }
   .header .container {
     justify-content: space-between;
-    padding: 1rem 15px;
+    padding: 0;
   }
   .theme-switcher {
     margin-left: auto;
